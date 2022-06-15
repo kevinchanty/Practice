@@ -1,7 +1,6 @@
-import { Card, PageHeader } from "antd";
+import { Alert, Card, PageHeader } from "antd";
 
 import Meta from "antd/lib/card/Meta";
-import { useState } from "react";
 import { useFetch } from "../hook/useFetch";
 import { fetchProduct } from "../request/request";
 import { useNavigate, useParams } from "react-router-dom";
@@ -21,7 +20,7 @@ export const ProductDetails: React.FunctionComponent = () => {
     <>
       Brand Name: {product?.brandName}
       <br />
-      Price: {product?.price?.formattedValue}
+      Price: {product?.price?.formattedValue ?? "N/A"}
       <br />
       Quantity: {product?.quantity}
       <br />
@@ -29,7 +28,11 @@ export const ProductDetails: React.FunctionComponent = () => {
     </>
   );
 
-  return (
+  return isLoading ? (
+    <>Loading...</>
+  ) : isError ? (
+    <Alert message={error} type="warning" style={{ marginTop: "10px" }} />
+  ) : (
     <>
       <PageHeader
         className="site-page-header"

@@ -20,8 +20,8 @@ export function useFetch<ResponseType = any>(request: AppRequest) {
         setStatus("SUCCESS");
       } catch (error: any) {
         setStatus("ERROR");
-        if (error.response) {
-          setError(error.response.error);
+        if (error.response.data) {
+          setError(error.response.data.error);
         } else {
           setError(error.message);
         }

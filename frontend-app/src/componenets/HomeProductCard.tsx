@@ -21,7 +21,7 @@ function HomeProductCard(props: HomeProductCard) {
 
   const details = (
     <>
-      Price: {price}
+      Price: {price ?? "N/A"}
       <br />
       Code: {code}
     </>

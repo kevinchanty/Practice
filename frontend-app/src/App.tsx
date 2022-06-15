@@ -12,15 +12,14 @@ function App() {
   return (
     <Layout style={{ minHeight: "100vh" }}>
       <Header style={{ position: "fixed", zIndex: 1, width: "100%" }}>
-        <div className="logo" />
         <Menu
           theme="dark"
           mode="horizontal"
-          defaultSelectedKeys={["2"]}
+          defaultSelectedKeys={["1"]}
           items={[
             {
               key: 1,
-              label: "Main",
+              label: "Home",
             },
           ]}
         />
