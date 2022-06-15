@@ -30,8 +30,8 @@ function App() {
         style={{ padding: "0 50px", marginTop: 64 }}
       >
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/product/:id" element={<ProductDetails />} />
+          <Route path="/" element={<Home />} />ˇ
+          <Route path="/products/:id" element={<ProductDetails />} />
         </Routes>
       </Content>
       <Footer style={{ textAlign: "center" }}>Practice by hktv</Footer>

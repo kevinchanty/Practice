@@ -1,29 +1,65 @@
-import { Card } from "antd";
+import { Card, Checkbox } from "antd";
 import Meta from "antd/lib/card/Meta";
-import { InfoCircleOutlined, AlignLeftOutlined } from "@ant-design/icons";
+import { InfoCircleOutlined, BarsOutlined } from "@ant-design/icons";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
-function HomeProductCard() {
+type HomeProductCard = {
+  id: number;
+  name: string;
+  price: string;
+  code: string;
+  imageUrl: string;
+  checked: boolean;
+  handleCheckBoxOnChage: (targetId: number, select: boolean) => void;
+};
+
+function HomeProductCard(props: HomeProductCard) {
+  const { id, name, price, code, imageUrl, checked, handleCheckBoxOnChage } =
+    props;
   const [isShowPreview, setIsShowPreview] = useState(false);
+
+  const details = (
+    <>
+      Price: {price}
+      <br />
+      Code: {code}
+    </>
+  );
+
   return (
     <Card
       style={{ width: 240 }}
       cover={
         <img
           alt="example"
-          src="https://images.hktv-img.com/images/HKTV/18230/ST_Sony_Xperia1_64_JP_Black_main_44326701_20200626130911_01_300.jpg"
+          src={
+            imageUrl ??
+            "https://via.placeholder.com/240x240.png?text=NO IMAGE :("
+          }
         />
       }
       actions={[
+        <Checkbox
+          checked={checked}
+          onChange={(e) => {
+            handleCheckBoxOnChage(id, e.target.checked);
+          }}
+        ></Checkbox>,
         <InfoCircleOutlined
           key="preview"
           onClick={() => setIsShowPreview((value) => !value)}
-          color="#1890ff"
         />,
-        <AlignLeftOutlined key="detail" />,
+        <Link to={`./products/${id}`}>
+          <BarsOutlined key="detail" />
+        </Link>,
       ]}
     >
-      <Meta title="testing" description={isShowPreview ? "details" : ""} />
+      <Meta
+        title={name}
+        description={isShowPreview ? details : ""}
+        style={{ wordBreak: "break-all" }}
+      />
     </Card>
   );
 }
