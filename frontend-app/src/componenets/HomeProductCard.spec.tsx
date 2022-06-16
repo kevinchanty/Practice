@@ -40,7 +40,7 @@ describe("HomeProductCard", () => {
     expect(screen.getByRole("checkbox")).toBeInTheDocument();
   });
 
-  it("should call handleCheckBoxOnChange when select checkbox is clicked", () => {
+  it("should call handleCheckBoxOnChange when select checkbox is clicked", async () => {
     const onClickMock = vi.fn();
 
     const { container } = render(
@@ -55,11 +55,11 @@ describe("HomeProductCard", () => {
       />
     );
 
-    userEvent.click(screen.getByRole("checkbox"));
+    await userEvent.click(screen.getByRole("checkbox"));
     expect(onClickMock).toBeCalled();
   });
 
-  it("if detailed button is clicked, product details will be shown", () => {
+  it("should show details when detail button is clicked", async () => {
     const { container } = render(
       <HomeProductcatd
         id={1234}
@@ -77,7 +77,7 @@ describe("HomeProductCard", () => {
     );
     expect(detailBtn).toBeTruthy();
 
-    userEvent.click(detailBtn!);
+    await userEvent.click(detailBtn!);
 
     expect(screen.getByText(/\$8888/i)).toBeInTheDocument();
   });
