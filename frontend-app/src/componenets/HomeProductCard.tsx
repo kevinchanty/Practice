@@ -11,12 +11,19 @@ type HomeProductCard = {
   code: string;
   imageUrl: string;
   checked: boolean;
-  handleCheckBoxOnChage: (targetId: number, select: boolean) => void;
+  handleCheckBoxOnChange: (targetId: number, select: boolean) => void;
 };
 
 function HomeProductCard(props: HomeProductCard) {
-  const { id, name, price, code, imageUrl, checked, handleCheckBoxOnChage } =
-    props;
+  const {
+    id,
+    name,
+    price,
+    code,
+    imageUrl,
+    checked,
+    handleCheckBoxOnChange: handleCheckBoxOnChage,
+  } = props;
   const [isShowPreview, setIsShowPreview] = useState(false);
 
   const details = (
@@ -49,6 +56,7 @@ function HomeProductCard(props: HomeProductCard) {
         <InfoCircleOutlined
           key="preview"
           onClick={() => setIsShowPreview((value) => !value)}
+          data-testid="details-button"
         />,
         <Link to={`./products/${id}`}>
           <BarsOutlined key="detail" />

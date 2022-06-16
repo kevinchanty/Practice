@@ -1,6 +1,4 @@
 import "./App.css";
-import { Layout, Menu } from "antd";
-import { Header, Content, Footer } from "antd/lib/layout/layout";
 import { Route, Routes } from "react-router-dom";
 import ProductDetails from "./pages/ProductDetails";
 import Home from "./pages/Home";

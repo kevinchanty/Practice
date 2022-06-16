@@ -54,7 +54,7 @@ export function Home() {
               code={product?.code}
               imageUrl={product?.images?.[0]?.url}
               checked={selected.includes(product.id)}
-              handleCheckBoxOnChage={handleSelectChange}
+              handleCheckBoxOnChange={handleSelectChange}
             />
           ))}
       </Space>
