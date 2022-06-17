@@ -41,7 +41,11 @@ export function Home() {
         minHeight: 380,
       }}
     >
-      <Space size={"large"} wrap style={{ justifyContent: "center" }}>
+      <Space
+        size={"large"}
+        wrap
+        style={{ justifyContent: "center", width: "100%" }}
+      >
         {products
           .slice((page - 1) * pageSize, (page - 1) * pageSize + pageSize)
           .map((product: any, index: number) => (
